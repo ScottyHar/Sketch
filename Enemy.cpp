@@ -1,7 +1,10 @@
 #include "Slash/DebugMacros.h"
 #include "Kismet/KismetSystemLibrary.h"
 #include "Kismet/GameplayStatics.h"
+//access the attribute component which is an UActorComponent
 #include "Components/AttributeComponent.h"
+//access the widgetcomponent
+#include"Components/WidgetComponent.h"
 
 AEnemy::AEnemy()
 {
@@ -12,4 +15,8 @@ AEnemy::AEnemy()
     
 //attribute component is created in the constructor for AEnemy
 	Attributes = CreateDefaultSubobject<UAttributeComponent>(TEXT("Attributes")); 
+	
+	//impliment the health bar widget which is UWidgetComponent class, creates a subobject and sets attachment to root component
+	HealthBarWidget = CreateDefaultSubobject<UWidgetComponent>(TEXT("HealthBar"));
+	HealthBarWidget->SetupAttachment(GetRootComponent());
 }
