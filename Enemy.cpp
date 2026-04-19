@@ -4,8 +4,8 @@
 //access the attribute component which is an UActorComponent
 #include "Components/AttributeComponent.h"
 //access the widgetcomponent
-#include"Components/WidgetComponent.h"
-
+// this has been replaced created a custom Health bar component #include"Components/WidgetComponent.h"
+#include "HUD/HealthBarComponent.h"
 AEnemy::AEnemy()
 {
 @@ -17,6 +18,8 @@ AEnemy::AEnemy()
@@ -17,6 +17,18 @@ AEnemy::AEnemy()
 	Attributes = CreateDefaultSubobject<UAttributeComponent>(TEXT("Attributes")); 
 	
 	//impliment the health bar widget which is UWidgetComponent class, creates a subobject and sets attachment to root component
-	HealthBarWidget = CreateDefaultSubobject<UWidgetComponent>(TEXT("HealthBar"));
-	HealthBarWidget->SetupAttachment(GetRootComponent());
+HealthBarWidget = CreateDefaultSubobject<UHealthBarComponent>(TEXT("HealthBar"));
+		
+		HealthBarWidget->SetupAttachment(GetRootComponent());
+
+		void AEnemy::BeginPlay()
+{
+	Super::BeginPlay();
+//on begin play if we have a healthbarwidget then setpercent to fixed value 1.f
+	if (HealthBarWidget)
+	{
+		HealthBarWidget->SetHealthPercent(1.f);
+	}
+}
+		
 }
