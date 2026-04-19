@@ -1,5 +1,6 @@
 #include "Enemy.generated.h"
 
+class UHealthBarComponent;
 class UAnimMontage;
 class UAttributeComponent;//added the attribute component
 
@@ -14,8 +15,8 @@ private:
 
 	//makes a variable, visible in defaults and instance, reference to health bar widget
 	UPROPERTY(VisibleAnywhere)
-	UWidgetComponent* HealthBarWidget;
-
+	// UWidgetComponent* has been placed with UHealthBarComponent	
+			UHealthBarComponent* HealthBarWidget;
 	/**
 	* Animation montages
 	*/
