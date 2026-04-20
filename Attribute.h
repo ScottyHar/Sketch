@@ -11,6 +11,11 @@ class SLASH_API UAttributeComponent : public UActorComponent
 public:	
 	UAttributeComponent();
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
+
+//part of the damage 
+	void ReceiveDamage(float Damage);
+	float GetHealthPercent();
+
 protected:
 	virtual void BeginPlay() override;
 private:
